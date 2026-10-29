@@ -1,12 +1,51 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import {auth} from"../utils/Firebase"
+import { addUser,removeUser } from '../utils/userSlice';
+import { signOut } from "firebase/auth";
+import { LOGO_IMG } from '../utils/Constants';
+
 
 const Header = () => {
+  
+  const navigate= useNavigate()
+  const dispatch = useDispatch()
+  useEffect(()=>{
+
+          onAuthStateChanged(auth, (user) => {
+          if (user) {
+            
+            const {uid ,email,displayName} = user;
+
+            dispatch(addUser({uid:uid,email:email, displayName:displayName}))
+            navigate("/browse")
+            
+            
+          } else {
+
+            // Sign-out successful.
+   
+              dispatch(removeUser())
+            
+          }
+      });
+      
+        },[])
+
+        
+  
   return (
 
-    <div className='relative p-1 m-1 z-10 bg-gradient-to-b from-black to-red-700'>
-    <img className=' w-44 p-1 m-1 ' src='https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAVIENVPMEM3Kn4hVzJseX4N8xPjtBDIpwuFDucWksdxQZ8Ss6Xf8U_vt7ThYYfRmzq0x1CS3nOwTGyVrgADvwfB_tPiK_liS2RjvI40RJSzbKRk-o8b3nCxHfCCnBsyB2XBB9_vRoSmN.svg' alt='Logo'/>
 
+    <div className='relative p-1 m-1 z-10 bg-gradient-to-b from-black to-red-700'>
+    <img className=' w-44 p-1 m-1 ' src={LOGO_IMG} alt='Logo'/>
   </div>
+
+
+
   )
 }
 
