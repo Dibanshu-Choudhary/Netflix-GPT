@@ -27,22 +27,19 @@ const Header = () => {
           } else {
 
             // Sign-out successful.
-   
               dispatch(removeUser())
             
           }
       });
-      
-        },[])
 
+        },[])
         
   
   return (
 
-
-    <div className='relative p-1 m-1 z-10 bg-gradient-to-b from-black to-red-700'>
-    <img className=' w-44 p-1 m-1 ' src={LOGO_IMG} alt='Logo'/>
-  </div>
+    <div className='relative p-1 w-full gap-11 z-10 bg-gradient-to-b from-black bg-opacity-40 justify-start'>
+    <img className=' w-44 ' src={LOGO_IMG} alt='Logo'/>
+    </div>
 
 
 
