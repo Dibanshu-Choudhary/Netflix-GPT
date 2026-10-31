@@ -8,6 +8,7 @@ export const BG_IMG = "https://assets.nflxext.com/ffe/siteui/vlv3/5aa70728-e223-
 
 export const API_OPTIONS = {
 
+
     method: 'GET',
     headers: {
       accept: 'application/json',
@@ -15,6 +16,4 @@ export const API_OPTIONS = {
     }
 };
 
-//   .then(res => res.json())
-//   .then(res => console.log(res))
-//   .catch(err => console.error(err));
+export const MOVIE_IMG= "https://image.tmdb.org/t/p/w500/"

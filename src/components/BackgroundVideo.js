@@ -25,13 +25,17 @@
 
     return (
 
-      <div > 
+      <div className='w-screen overflow-hidden'> 
+   
+
         <iframe
-            src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1`}
-            title="Movie Trailer"
-            allow="autoplay; encrypted-media"
-            className="w-screen aspect-video"
-          />
+                className="w-screen aspect-video pointer-events-none"
+                src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer.key}&rel=0&playsinline=1`}
+                title="Background Trailer"
+                allow="autoplay; encrypted-media"
+                tabIndex="-1"
+              />
+
       </div>
 
     )

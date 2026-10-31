@@ -6,10 +6,14 @@ import { signOut } from 'firebase/auth'
 import { PROFILE_IMG } from '../utils/Constants'
 import useNowMoviePlaying from '../hooks/useNowMoviePlaying'
 import MainContainer from './MainContainer'
+import SecondContainer from './SecondContainer'
+import useTopRatedMovies from '../hooks/useTopRatedMovies'
+import { addtopRatedMovies } from '../utils/movieSlice'
 
 const Browse = () => {
 
   useNowMoviePlaying()
+  useTopRatedMovies()
 
   const navigate = useNavigate()
 
@@ -18,35 +22,33 @@ const Browse = () => {
     navigate("/")
   }
 
-  return (
-    <div className=''>
+ return (
+  <div className="relative min-h-screen overflow-x-hidden overflow-y-hidden bg-black">
 
-      <div className="flex justify-between items-center px-6 absolute">
+    <div className="absolute top-0 left-0 z-20 flex w-full justify-between items-center px-6">
+      <Header />
 
-        <Header />
+      <div className="flex items-center gap-3 py-4 text-white">
+        <img
+          className="w-12 h-12"
+          src={PROFILE_IMG}
+          alt="Profile"
+        />
 
-        <div className="flex items-center gap-3 py-4 z-10    ">
-          <img
-            className="w-12 h-12 "
-            src={PROFILE_IMG}
-            alt="Profile"
-          />
-
-          <button
-            className="font-bold"
-            onClick={backTologin}
-          >
-            Sign Out
-          </button>
-        </div>
-
+        <button
+          className="font-bold"
+          onClick={backTologin}
+        >
+          Sign Out
+        </button>
       </div>
-
-      {/* Main content below the header */}
-      <MainContainer />
-
     </div>
-  )
+
+    <MainContainer />
+    <SecondContainer />
+
+  </div>
+)
 }
 
 export default Browse

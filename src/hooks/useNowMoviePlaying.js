@@ -23,7 +23,6 @@ const dispatch =   useDispatch()
     },[])
 
   
-
 }
 
 export default useNowMoviePlaying;

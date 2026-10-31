@@ -14,7 +14,7 @@ const MainContainer = () => {
   console.log(mainMovie)
 
   return (
-    <div className='absolute'>
+    <div className=''>
       <MovieTitle title={mainMovie.title} overview={mainMovie.overview}/>  
       <BackgroundVideo />
     </div>
